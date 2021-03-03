@@ -1,6 +1,6 @@
 # Walmart Interview GitHub Submission
 
-Submission for Walmart SWE Interview. You can see it in action [here](https://edumorales.dev./walmart)!
+Submission for Walmart SWE Interview. You can see it in action [here](https://edumorales.dev/walmart)!
 
 ## How to Run
 
