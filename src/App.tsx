@@ -9,12 +9,11 @@ import './index.css';
 export default function App() {
   // All the Issues.
   const [issues, setIssues] = useState<Issue[]>([]);
-  const [selectedIssue, setSelectedIssue] = useState<Issue | undefined>(
-    undefined
-  );
+  const [selectedIssue, setSelectedIssue] = useState<Issue>();
   const [comments, setComments] = useState<Comment[]>([]);
 
-  const setSelectedIssueAndFetchComments = (issue: Issue) => {
+  const setSelectedIssueAndFetchComments = (issue: Issue): void => {
+    console.log(issue);
     setSelectedIssue(issue);
     fetchComments(issue.comments_url);
     window.history.replaceState(null, '', String(issue.number));
@@ -27,11 +26,21 @@ export default function App() {
           if (response) {
             // Assuming that the larger the issue number, the more recent the issue is.
             response.sort((a: Issue, b: Issue) => b.number - a.number);
+
             // Store all the issues.
             setIssues(response);
+
+            const selectedIssueNumber = Number(
+              window.location.pathname.substring(1)
+            );
+
+            const issueToDisplay =
+              response.find(issue => issue.number === selectedIssueNumber) ||
+              response[0];
+
             // Put the most recent issue in view.
             // Fetch comments for the issue in view.
-            setSelectedIssueAndFetchComments(response[0]);
+            setSelectedIssueAndFetchComments(issueToDisplay);
           }
         });
       }

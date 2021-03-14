@@ -3,6 +3,10 @@ import {Issue, Label} from './Issue';
 import Comment from './Comment';
 import User from './User';
 
+/**
+ * Panel that contains a single Issue with all of its information
+ * @param props an Issue object along its list of Comments
+ */
 export default function IssueViewPanel(props: {
   issue?: Issue;
   comments: Comment[];

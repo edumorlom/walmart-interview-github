@@ -24,7 +24,7 @@ export default function Issues(props: {
   const issuesInCurrentPage = chunkedIssues[currentPage] || [];
 
   // Function that updates the searchQuery any time user types something into array.
-  const onSearchType = (e: any) => setSearchQuery(e.target.value);
+  const onSearchType = e => setSearchQuery(e.target.value);
 
   return (
     <div className={'issue-selection-panel'}>
@@ -98,7 +98,7 @@ function Pagination(props: {
   currentPage: number;
   totalPages: number;
 }): JSX.Element {
-  // Create an array of totalPages elements: [0, 1, 2, 3, 4, 5 ... totalPages]
+  // Create an array of totalPages elements: [0, 1, 2, 3, 4, 5 ... totalPages].
   const allPageIndices = Array.from(Array(props.totalPages).keys());
 
   // For every page index, create a button.
